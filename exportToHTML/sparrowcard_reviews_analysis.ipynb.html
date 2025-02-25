@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>sparrowcard_reviews_analysis.ipynb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.ls0 { height: 1px; border-width: 0; color: #43454a; background-color:#43454a}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+sparrowcard_reviews_analysis.ipynb</font>
+</center></td></tr></table>
+<pre><span class="s0">#%% md 
+</span><span class="s1"># Sparrow Card Reviews: Insights &amp; Analysis on Customer Feedback 
+--- <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">## Introduction: 
+- Sparrow is a financial tech company with a mission to empower the underserved and overlooked in our communities by removing financial barriers that come from less than stellar credit. Their goal is to help guide customers to financial freedom. Sparrow Card is a type of Mastercard that can be used to build up credit. 
+- Purpose: To look at reviews in order to better understand user sentiments and word choices. These can be used in order to track customer satisfaction over time, and come up with possible solutions to client dilemmas. 
+--- <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">## Data Importing and Processing 
+- Data was collecting through web-scraping customer reviews from Credit Karma. Future data collection will happen through Google API requests. I first used Selenium to log into Credit Karma. From there I navigated to each of the first 10 pages and downloaded the source html file. After, I used beautiful soup to scrape the reviews from the txt files. (See sparrow_reviews_ck and then bs_scrape_reviews.py) 
+- I'm only including the first 10 pages of reviews currently, but future rounds will include thousands of reviews. 
+--- <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">## Exploratory Data Analysis (EDA): 
+In order to tackle this problem, I used the following strategies (In the sparrow_sentiment_analysis.py file): 
+1) First, I call the function sentiment_analysis. This function uses Huggingface natural language processing to look for the positive and negative vocabulary used in reviews. From there, I create a graph to show the percent of positive language used versus the percent of negative language used. 
+2) Second, I read the data in to a pandas data frame. I then called a function to count the words, making sure I removed common words such as 'and' and 'the' using a common words list. I then found the top 20 most common words across the reviews. 
+--- 
+ <hr class="ls0"></span><span class="s0">#%% md 
+</span><span class="s1">## Uncovering Key Insights from Sparrow Card Reviews 
+Looking at the data showed some interesting insights: 
+1) Customers love Sparrow! Over 97% of the words used were positive as opposed to less than 3% being considered negative. 
+2) Customers who wrote positive reviews used words such as &quot;easy, good, great, app, approved&quot; to describe SparrowCard. Showcasing how easy the approval process and app are. 
+3) Customers who wrote negative reviews used words such as &quot;payments, months, and limit&quot;, which may show that they were disappointed with the APR or their credit limit. <hr class="ls0"></span><span class="s0">#%% 
+</span><span class="s2">%</span><span class="s1">run sparrow_sentiment_analysis</span><span class="s2">.</span><span class="s1">py</span><hr class="ls0"><span class="s0">#%% md 
+</span><span class="s1"># Conclusion &amp; Next Steps 
+This was a quick (if you define 5 hours as that!) analysis of some customer reviews. It shows very positive trends in the review data sorted by most recent. 
+ 
+Possible future steps include: 
+1) collecting data from the Google Play Store / Apple App store. 
+2) looking at specific aspects of products (such as customer service, interest rates, rewards, etc) 
+3) using sentiment / engagements to determine churn rates. 
+4) using NLP's to detect fraudulent reviews and potentially expunge them. 
+5) running comparisons on competitors to gain insight on competition and common / different pain points across cards. 
+6) creating a time series model that tracks sentiment over time, and sees if there are any seasonal trends in satisfaction or complaints. 
+7) add more visualization tools (such as word clouds and dashboards) 
+8) automate the process so that it runs each week.</span></pre>
+</body>
+</html>
